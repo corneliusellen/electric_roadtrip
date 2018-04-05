@@ -1,0 +1,23 @@
+.login-background {
+  background-image: url('out_of_gas.png');
+  background-repeat: no-repeat;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.top-login-text {
+  color: white;
+  align-content: flex-start;
+  text-align: center;
+  padding-top: 60px;
+}
+
+.bottom-login-text {
+  color: white;
+  align-content: flex-end;
+  text-align: center;
+}
