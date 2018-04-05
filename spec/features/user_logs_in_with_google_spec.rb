@@ -24,6 +24,7 @@ describe "user logs in" do
     visit root_path
     click_link("Sign in with Google")
 
+    expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Hello, Ellen Cornelius")
     expect(page).to have_link("Logout")
   end
