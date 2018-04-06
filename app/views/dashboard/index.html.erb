@@ -1,8 +1,29 @@
-<% if current_user %>
-  <h2>Hello, <%= "#{current_user.first_name} #{current_user.last_name}" %></h2>
-  <p>Vehicles:</p>
-  <%= link_to "Add First Vehicle", new_vehicle_path %>
+<div class="nav">
   <p><%= link_to "Logout", logout_path %></p>
-<% else %>
-  <p>didn't work</p>
-<% end %>
+</div>
+
+<div class="dashboard-nav">
+  <div class="dashboard-circle-button">
+    <h2><%= link_to "Compare Vehicles", compare_vehicles_path %></h2>
+  </div>
+  <div class="dashboard-large-circle-button">
+    <h2><%= link_to "Drive", compare_vehicles_path %></h2>
+  </div>
+  <div class="dashboard-circle-button">
+    <h2><%= link_to "Find Routes", compare_vehicles_path %></h2>
+  </div>
+</div>
+
+<div class="dashboard-profile">
+
+  <div class="dashboard-profile-nav">
+    <h2>Hello, <%= "#{current_user.first_name} #{current_user.last_name}" %></h2>
+    <p>Edit Profile</p>
+  </div>
+
+  <div class="dashboard-profile-vehicles">
+    <p>Vehicles:</p>
+    <p><%= link_to "Add First Vehicle", new_vehicle_path %></p>
+  </div>
+
+</div>
