@@ -1,9 +1,11 @@
 @import "modules/buttons";
 @import "modules/colors";
+@import "modules/circles";
 
 body, html {
   margin: 0px;
   height: 100%;
+  background-color: $white;
 }
 
 h1 {
@@ -31,3 +33,15 @@ p {
    line-height: 23px;
    margin: 0 0 23px 0;
    }
+
+a {
+  text-decoration: none;
+  color: $white;
+}
+
+a:hover {
+  color: $lightning
+}
+a:active {
+  color: $queen
+}
