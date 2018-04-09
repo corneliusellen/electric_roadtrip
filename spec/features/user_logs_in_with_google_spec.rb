@@ -18,8 +18,8 @@ def stub_omniauth
     })
 end
 
-describe "user logs in" do
-  scenario "using google oauth2" do
+describe "User logs in" do
+  scenario "Using google oauth2" do
     stub_omniauth
     visit root_path
     click_link("Sign in with Google")
