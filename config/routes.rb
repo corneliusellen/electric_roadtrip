@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   get 'logout', to: 'sessions#destroy'
   get 'dashboard', to: 'dashboard#index'
   get '/comparision', to: 'comparision#new', as: 'new_comparision'
-  resources :vehicles
+  resources :vehicles, except: [:new]
+  get '/new_search', to: 'search#new'
+  get '/search', to: 'search#index'
 end
