@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
   get 'dashboard', to: 'dashboard#index'
-  get '/compare', to: 'compare#new', as: 'compare_vehicles'
+  get '/comparision', to: 'comparision#new', as: 'new_comparision'
   resources :vehicles
 end
