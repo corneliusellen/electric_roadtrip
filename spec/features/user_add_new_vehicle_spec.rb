@@ -11,13 +11,20 @@ describe "User can add vehicle to profile" do
       click_on "Add First Vehicle"
 
       expect(current_path).to eq(new_search_path)
-      expect(page).to have_content("Find your vehicle")
+      expect(page).to have_content("Find Your Vehicle")
 
-      fill_in('Vehicle ID', with: 123)
-      click_on 'Submit'
+      fill_in('Vehicle ID', with: 33900)
+      click_on 'Find'
 
       expect(current_path).to eq(search_path)
-      expect(page).to have_content("Some vehicle information: make, model, year, fuel type, mpg, emissions, picture w color IF ev: range, time to charge")
+      expect(page).to have_content("Make: Chevrolet")
+      expect(page).to have_content("Model: Volt")
+      expect(page).to have_content("Year: 2014")
+      expect(page).to have_content("Fuel Type: Premium Gas or Electricity")
+      expect(page).to have_content("Range: 38 miles")
+      expect(page).to have_content("MPGe: 98")
+      expect(page).to have_content("Time to charge at 120V: n/a")
+      expect(page).to have_content("Time to charge at 240V: 4.0 hours")
     end
   end
 end
