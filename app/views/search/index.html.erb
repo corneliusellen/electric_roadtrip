@@ -6,3 +6,88 @@ Range: <%= @vehicle.range %> miles
 MPGe: <%= @vehicle.mpge %>
 Time to charge at 120V: <%= @vehicle.charge_120 %>
 Time to charge at 240V: <%= @vehicle.charge_240 %>
+
+<div id='map' class='contain'></div>
+<script>
+  var userAddress = [<%= @long %>, <%= @lat %>];
+  var vehicleRadius = <%= @vehicle.range %>*1.60934
+
+  // Add your access token
+  mapboxgl.accessToken = 'pk.eyJ1IjoiY29ybmVsaXVzZWxsZW4iLCJhIjoiY2pmcXl6bXJ6Mms4dTJ3bWs1ZXlybHI0YyJ9.8vNvhgU9s1lCoR2u-zGtdA'
+
+
+  // Initialize a map
+  var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mapbox/light-v9', // stylesheet location
+    center: userAddress, // starting position
+    zoom: 6 // starting zoom
+  });
+
+  // Create a GeoJSON feature collection for the user address
+  var address = turf.featureCollection([turf.point(userAddress)]);
+
+  map.on('load', function() {
+  var marker = document.createElement('div');
+  marker.classList = 'address';
+
+    // Create a new marker
+    addressMarker = new mapboxgl.Marker(marker)
+      .setLngLat(userAddress)
+      .addTo(map);
+
+
+    var createGeoJSONCircle = function(center, radiusInKm, points) {
+    if(!points) points = 64;
+
+    var coords = {
+        latitude: center[1],
+        longitude: center[0]
+    };
+
+    var km = radiusInKm;
+
+    var ret = [];
+    var distanceX = km/(111.320*Math.cos(coords.latitude*Math.PI/180));
+    var distanceY = km/110.574;
+
+    var theta, x, y;
+    for(var i=0; i<points; i++) {
+        theta = (i/points)*(2*Math.PI);
+        x = distanceX*Math.cos(theta);
+        y = distanceY*Math.sin(theta);
+
+        ret.push([coords.longitude+x, coords.latitude+y]);
+    }
+    ret.push(ret[0]);
+
+    return {
+        "type": "geojson",
+        "data": {
+            "type": "FeatureCollection",
+            "features": [{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [ret]
+                }
+            }]
+        }
+    };
+  };
+
+  map.addSource("polygon", createGeoJSONCircle(userAddress, vehicleRadius));
+
+  map.addLayer({
+      "id": "polygon",
+      "type": "fill",
+      "source": "polygon",
+      "layout": {},
+      "paint": {
+          "fill-color": "blue",
+          "fill-opacity": 0.6
+      }
+  });
+
+});
+</script>
