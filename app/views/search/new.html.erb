@@ -1,8 +1,10 @@
 <h2>Find Your Vehicle:</h2>
 
 <%= form_tag search_path, method: :get do %>
-  <%= label_tag :vehicle_id %>
-  <%= number_field_tag 'Vehicle ID' %>
+
+  <%= number_field_tag :vehicle_id, 'Vehicle ID' %>
+
+  <%= text_field_tag :address, 'Home Address' %>
 
   <%= submit_tag "Find" %>
 <% end %>
