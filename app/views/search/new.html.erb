@@ -8,3 +8,94 @@
 
   <%= submit_tag "Find" %>
 <% end %>
+
+<aside class="year-dropdown">
+  <select class="year-menu" name="" value="">
+    <option selected>Select Year</option>
+  </select>
+</aside>
+
+<aside class="make-dropdown">
+  <select class="make-menu">
+    <option selected>Select Make</option>
+  </select>
+</aside>
+
+<aside class="model-dropdown">
+  <select class="model-menu">
+    <option selected>Select Model</option>
+  </select>
+</aside>
+
+<script type="text/javascript">
+  $(document).ready(() => {
+  $('.make-menu').hide()
+  $('.model-menu').hide()
+  fetchYears();
+  });
+
+  const fetchYears = () => {
+    fetch(`http://localhost:3000/api/v1/years`)
+    .then((response) => response.json())
+    .then((years) => {
+      years.forEach((year) => {
+        prependYear(year)
+      })
+  })}
+
+  const prependYear = (year) => {
+    $('.year-menu').prepend(`
+      <option value="${year['value']}">
+      ${year['text']}
+      </option>
+      `)
+  }
+
+  const fetchMakes = (year) => {
+    $('.make-menu').show();
+    fetch(`http://localhost:3000/api/v1/makes?year=1999`)
+    .then((response) => response.json())
+    .then((makes) => {
+      makes.forEach((make) => {
+        prependMake(make)
+      })
+    })
+  }
+
+  const prependMake = (make) => {
+    $('.make-menu').prepend(`
+      <option value="${make['value']}">
+      ${make['text']}
+      </option>
+      `)
+  }
+
+  const fetchModels = (year, make) => {
+    $('.model-menu').show();
+    fetch(`http://localhost:3000/api/v1/models?year=1999&make=subaru`)
+    .then((response) => response.json())
+    .then((models) => {
+      models.forEach((model) => {
+        prependModel(model)
+      })
+    })
+  }
+
+  const prependModel = (model) => {
+    $('.model-menu').prepend(`
+      <option value="${model['value']}">
+      ${model['text']}
+      </option>
+      `)
+  }
+
+  // Event Listeners
+  $('.year-menu').on('change', function() {
+    fetchMakes($('.year-menu').find(':selected').text())
+  });
+
+  $('.make-menu').on('change', function() {
+    fetchModels($('.year-menu').find(':selected').text(), $('.make-menu').find(':selected').text())
+  });
+
+</script>
