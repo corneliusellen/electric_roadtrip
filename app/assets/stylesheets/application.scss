@@ -56,6 +56,20 @@
 
 }
 
+#map {
+  width: 300px;
+  height: 300px;
+}
+
+.address {
+  width: 10px;
+  height: 10px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #3887be;
+  pointer-events: none;
+}
+
 // .dashboard-nav {
 //   background-image: url('stephen-monroe.jpg');
 //   background-repeat: no-repeat;

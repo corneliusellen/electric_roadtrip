@@ -13,7 +13,8 @@ describe "User can add vehicle to profile" do
       expect(current_path).to eq(new_search_path)
       expect(page).to have_content("Find Your Vehicle")
 
-      fill_in('Vehicle ID', with: 33900)
+      fill_in :vehicle_id, with: 33900
+      fill_in :address, with: "1331 17th St, Denver, CO"
       click_on 'Find'
 
       expect(current_path).to eq(search_path)
