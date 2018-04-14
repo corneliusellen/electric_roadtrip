@@ -27,6 +27,12 @@ class VehicleSearch
     JSON.parse(json)["menuItems"]["menuItem"]
   end
 
+  def get_options(year, make, model)
+    response = Faraday.get("https://www.fueleconomy.gov/ws/rest/vehicle/menu/options?model=#{model}&make=#{make}&year=#{year}")
+    json = Hash.from_xml(response.body).to_json
+    JSON.parse(json)["menuItems"]["menuItem"]
+  end
+
   private
 
   attr_reader :id
