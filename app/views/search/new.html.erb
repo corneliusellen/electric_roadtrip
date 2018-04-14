@@ -27,10 +27,17 @@
   </select>
 </aside>
 
+<aside class="option-dropdown">
+  <select class="option-menu">
+    <option selected>Select Type</option>
+  </select>
+</aside>
+
 <script type="text/javascript">
   $(document).ready(() => {
   $('.make-menu').hide()
   $('.model-menu').hide()
+  $('.option-menu').hide()
   fetchYears();
   });
 
@@ -53,7 +60,7 @@
 
   const fetchMakes = (year) => {
     $('.make-menu').show();
-    fetch(`http://localhost:3000/api/v1/makes?year=1999`)
+    fetch("http://localhost:3000/api/v1/makes?year=" + year)
     .then((response) => response.json())
     .then((makes) => {
       makes.forEach((make) => {
@@ -72,7 +79,7 @@
 
   const fetchModels = (year, make) => {
     $('.model-menu').show();
-    fetch(`http://localhost:3000/api/v1/models?year=1999&make=subaru`)
+    fetch(`http://localhost:3000/api/v1/models?year=${year}&make=${make}`)
     .then((response) => response.json())
     .then((models) => {
       models.forEach((model) => {
@@ -89,13 +96,38 @@
       `)
   }
 
+  const fetchOptions = (year, make, model) => {
+    $('.option-menu').show();
+    fetch(`http://localhost:3000/api/v1/options?year=${year}&make=${make}&model=${model}`)
+    .then((response) => response.json())
+    .then((options) => {
+      options.forEach((option) => {
+        prependOption(option)
+      })
+    })
+  }
+
+  const prependOption = (option) => {
+    $('.option-menu').prepend(`
+      <option value="${option['value']}">
+      ${option['text']}
+      </option>
+      `)
+  }
+
   // Event Listeners
   $('.year-menu').on('change', function() {
-    fetchMakes($('.year-menu').find(':selected').text())
+    fetchMakes(($('.year-menu').find(':selected').text()).trim())
   });
 
   $('.make-menu').on('change', function() {
-    fetchModels($('.year-menu').find(':selected').text(), $('.make-menu').find(':selected').text())
+    fetchModels(($('.year-menu').find(':selected').text()).trim(), ($('.make-menu').find(':selected').text()).trim())
+  });
+
+  $('.model-menu').on('change', function() {
+    fetchOptions(
+      ($('.year-menu').find(':selected').text()).trim(), ($('.make-menu').find(':selected').text()).trim(), ($('.model-menu').find(':selected').text()).trim()
+    )
   });
 
 </script>
