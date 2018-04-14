@@ -30,6 +30,9 @@
 
   <input id="new-search-submit" type="submit" name="" value="Find!">
 
+  <div id="vehicle_info">
+  </div>
+
 <script type="text/javascript">
   $(document).ready(() => {
   $('.make-menu').hide()
@@ -114,11 +117,14 @@
 
   const postSearch = () => {
     $.ajax({
-    type: 'GET',
-    url: '/search',
-    data: { vehicle_id: ($('.option-menu').children(':selected').val()),
-            address: ($('.address-field').children().val())
-          }
+      type: 'GET',
+      url: '/search',
+      data: { vehicle_id: ($('.option-menu').children(':selected').val()),
+              address: ($('.address-field').children().val())
+            },
+      success:function(responseText) {
+        $('#vehicle_info').html(responseText);
+      }
     });
   }
 
