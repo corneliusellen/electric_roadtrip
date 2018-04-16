@@ -16,23 +16,6 @@
 @import "partials/base";
 @import "partials/login";
 
-.nav {
-  display: flex;
-  justify-content: flex-end;
-  height: 60px;
-  background-color: $cerulean;
-  align-items: center;
-  p {
-    padding: 20px 20px 0px 0px;
-  }
-}
-
-.dashboard-nav {
-  display: flex;
-  justify-content: space-around;
-  padding: 40px;
-}
-
 .dashboard-circle-button {
   @include circle(250px, 30px)
 }
@@ -41,19 +24,43 @@
   @include circle(300px, 40px)
 }
 
-.dashboard-profile {
-  background-color: $cerulean;
-  height: 280px;
-  padding: 30px;
-}
-
-.dashboard-profile-nav {
+.dashbaord {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap-reverse;
+  justify-content: space-between;
 }
 
-.dashboard-profile-vehicles {
+.left-secondary-half  {
+  width: 50%;
+  height: 100vh;
+  background: linear-gradient(
+   rgba(0, 0, 0, 0.8),
+   rgba(0, 0, 0, 0.8)
+   ),
+   url('leather.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
+.profile {
+  display: flex;
+  justify-content: space-between;
+}
+
+.right-primary-half {
+  background-image: url('leather.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.background {
+  @include box
 }
 
 #map {
@@ -68,33 +75,4 @@
   border-radius: 50%;
   background: #3887be;
   pointer-events: none;
-}
-
-// .dashboard-nav {
-//   background-image: url('stephen-monroe.jpg');
-//   background-repeat: no-repeat;
-//   height: 50%;
-//   background-size: cover;
-//   background-position: center;
-//   flex-direction: column;
-//   align-items: center;
-
-//   h2 {
-//     position: relative;
-//     z-index: 1;
-//     margin-top: -330px;
-//
-//     a {
-//       color: $white;
-//     }
-//   }
-// }
-
-.transparent-bar {
-  background-color: #342E37;
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  opacity: 0.5;
-  height: 100px;
 }

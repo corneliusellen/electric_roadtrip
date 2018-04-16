@@ -1,11 +1,11 @@
 @import "modules/buttons";
 @import "modules/colors";
 @import "modules/circles";
+@import "modules/boxes";
 
 body, html {
   margin: 0px;
   height: 100%;
-  background-color: $white;
 }
 
 h1 {
@@ -25,6 +25,7 @@ h2 {
    text-transform: uppercase;
    letter-spacing: -1px;
    margin: 0 0 23px 0;
+   color: $white;
    }
 
 p {
@@ -32,6 +33,7 @@ p {
    font-size: 17px;
    line-height: 23px;
    margin: 0 0 23px 0;
+   color: $white;
    }
 
 a {

@@ -1,10 +1,155 @@
-<h2>Find Your Vehicle:</h2>
+<div class="dashbaord">
+  <div class="left-secondary-half">
+    <div class="background">
+      <h2>Find Your Vehicle:</h2>
 
-<%= form_tag search_path, method: :get do %>
+      <aside class="address-field">
+        <input type="text" name="" value="" placeholder="Enter Home Address">
+      </aside>
 
-  <%= number_field_tag :vehicle_id, 'Vehicle ID' %>
+      <aside class="year-dropdown">
+        <select class="year-menu">
+          <option selected>Select Year</option>
+        </select>
+      </aside>
 
-  <%= text_field_tag :address, 'Home Address' %>
+      <aside class="make-dropdown">
+        <select class="make-menu">
+          <option selected>Select Make</option>
+        </select>
+      </aside>
 
-  <%= submit_tag "Find" %>
-<% end %>
+      <aside class="model-dropdown">
+        <select class="model-menu">
+          <option selected>Select Model</option>
+        </select>
+      </aside>
+
+      <aside class="option-dropdown">
+        <select class="option-menu">
+          <option selected>Select Type</option>
+        </select>
+      </aside>
+
+      <input id="new-search-submit" type="submit" name="" value="Find!">
+    </div>
+  </div>
+
+  <div class="right-primary-half">
+      <div id="vehicle_info">
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(() => {
+  $('.make-menu').hide()
+  $('.model-menu').hide()
+  $('.option-menu').hide()
+  fetchYears();
+  });
+
+  const fetchYears = () => {
+    fetch(`http://localhost:3000/api/v1/years`)
+    .then((response) => response.json())
+    .then((years) => {
+      years.forEach((year) => {
+        prependYear(year)
+      })
+  })}
+
+  const prependYear = (year) => {
+    $('.year-menu').prepend(`
+      <option value="${year['value']}">
+      ${year['text']}
+      </option>
+      `)
+  }
+
+  const fetchMakes = (year) => {
+    $('.make-menu').show();
+    fetch("http://localhost:3000/api/v1/makes?year=" + year)
+    .then((response) => response.json())
+    .then((makes) => {
+      makes.forEach((make) => {
+        prependMake(make)
+      })
+    })
+  }
+
+  const prependMake = (make) => {
+    $('.make-menu').prepend(`
+      <option value="${make['value']}">
+      ${make['text']}
+      </option>
+      `)
+  }
+
+  const fetchModels = (year, make) => {
+    $('.model-menu').show();
+    fetch(`http://localhost:3000/api/v1/models?year=${year}&make=${make}`)
+    .then((response) => response.json())
+    .then((models) => {
+      models.forEach((model) => {
+        prependModel(model)
+      })
+    })
+  }
+
+  const prependModel = (model) => {
+    $('.model-menu').prepend(`
+      <option value="${model['value']}">
+      ${model['text']}
+      </option>
+      `)
+  }
+
+  const fetchOptions = (year, make, model) => {
+    $('.option-menu').show();
+    fetch(`http://localhost:3000/api/v1/options?year=${year}&make=${make}&model=${model}`)
+    .then((response) => response.json())
+    .then((options) => {
+      options.forEach((option) => {
+        prependOption(option)
+      })
+    })
+  }
+
+  const prependOption = (option) => {
+    $('.option-menu').prepend(`
+      <option value="${option['value']}">
+      ${option['text']}
+      </option>
+      `)
+  }
+
+  const postSearch = () => {
+    $.ajax({
+      type: 'GET',
+      url: '/search',
+      data: { vehicle_id: ($('.option-menu').children(':selected').val()),
+              address: ($('.address-field').children().val())
+            },
+      success:function(responseText) {
+        $('#vehicle_info').html(responseText);
+      }
+    });
+  }
+
+  // Event Listeners
+  $('.year-menu').on('change', function() {
+    fetchMakes(($('.year-menu').find(':selected').text()).trim())
+  });
+
+  $('.make-menu').on('change', function() {
+    fetchModels(($('.year-menu').find(':selected').text()).trim(), ($('.make-menu').find(':selected').text()).trim())
+  });
+
+  $('.model-menu').on('change', function() {
+    fetchOptions(
+      ($('.year-menu').find(':selected').text()).trim(), ($('.make-menu').find(':selected').text()).trim(), ($('.model-menu').find(':selected').text()).trim()
+    )
+  });
+
+  $('#new-search-submit').on('click', postSearch);
+
+</script>

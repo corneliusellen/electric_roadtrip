@@ -1,29 +1,24 @@
-<div class="nav">
-  <p><%= link_to "Logout", logout_path %></p>
-</div>
-
-<div class="dashboard-nav">
-  <div class="dashboard-circle-button">
-    <h2><%= link_to "Compare Vehicles", new_comparision_path %></h2>
-  </div>
-  <div class="dashboard-large-circle-button">
-    <h2><%= link_to "Drive" %></h2>
-  </div>
-  <div class="dashboard-circle-button">
-    <h2><%= link_to "Find Routes" %></h2>
-  </div>
-</div>
-
-<div class="dashboard-profile">
-
-  <div class="dashboard-profile-nav">
-    <h2>Hello, <%= "#{current_user.first_name} #{current_user.last_name}" %></h2>
-    <p>Edit Profile</p>
+<div class="dashbaord">
+  <div class="left-secondary-half">
+    <div class="background">
+      <div class="profile">
+        <h2>Hello, <%= "#{current_user.first_name} #{current_user.last_name}" %></h2>
+        <p>Edit Profile</p>
+        <p><%= link_to "Logout", logout_path %></p>
+      </div>
+      <div class="vehicles">
+        <p>Vehicles:</p>
+        <p><%= link_to "Add First Vehicle", new_search_path %></p>
+      </div>
+    </div>
   </div>
 
-  <div class="dashboard-profile-vehicles">
-    <p>Vehicles:</p>
-    <p><%= link_to "Add First Vehicle", new_search_path %></p>
+  <div class="right-primary-half">
+    <div class="dashboard-circle-button">
+      <h2><%= link_to "Compare Vehicles", new_comparision_path %></h2>
+    </div>
+    <div class="dashboard-circle-button">
+      <h2><%= link_to "Find Routes" %></h2>
+    </div>
   </div>
-
 </div>

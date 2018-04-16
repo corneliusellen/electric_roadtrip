@@ -7,4 +7,13 @@ Rails.application.routes.draw do
   resources :vehicles, except: [:new]
   get '/new_search', to: 'search#new'
   get '/search', to: 'search#index'
+
+  namespace :api do
+    namespace :v1 do
+      get '/years', to: 'years#index'
+      get '/makes', to: 'makes#index'
+      get '/models', to: 'models#index'
+      get '/options', to: 'options#index'
+    end
+  end
 end
