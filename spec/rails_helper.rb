@@ -55,3 +55,8 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end
+
+Capybara.configure do |config|
+  config.default_max_wait_time = 3
+  config.ignore_hidden_elements = false
+end
