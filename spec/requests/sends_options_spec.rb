@@ -7,7 +7,7 @@ describe "Options API" do
     results = JSON.parse(response.body)
 
     expect(response.body).to be_a String
-    expect(results.count).to eq(2)
-    expect(results["value"]).to eq("39786")
+    expect(results.count).to eq(1)
+    expect(results.first["value"]).to eq("39786")
   end
 end
