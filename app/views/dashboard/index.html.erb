@@ -9,6 +9,11 @@
       <div class="vehicles">
         <p>Vehicles:</p>
         <p><%= link_to "Add First Vehicle", new_search_path %></p>
+        <% current_user.vehicles.each do |vehicle| %>
+          <p><%= vehicle.make %></p>
+          <p><%= vehicle.model %></p>
+          <p><%= vehicle.year %></p>
+        <% end %>
       </div>
     </div>
   </div>
