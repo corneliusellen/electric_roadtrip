@@ -7,6 +7,8 @@ MPGe: <%= @vehicle.mpge %>
 Time to charge at 120V: <%= @vehicle.charge_120 %>
 Time to charge at 240V: <%= @vehicle.charge_240 %>
 
+<%= button_to "Save Vehicle", {controller: "vehicles", action: :create, vehicle: @vehicle.attributes}, method: :post %>
+
 <div id='map' class='contain'></div>
 <script>
   var userAddress = [<%= @long %>, <%= @lat %>];
