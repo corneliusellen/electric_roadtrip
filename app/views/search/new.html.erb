@@ -49,7 +49,7 @@
   });
 
   const fetchYears = () => {
-    fetch(`http://localhost:3000/api/v1/years`)
+    fetch(`/api/v1/years`)
     .then((response) => response.json())
     .then((years) => {
       years.forEach((year) => {
@@ -67,7 +67,7 @@
 
   const fetchMakes = (year) => {
     $('.make-menu').show();
-    fetch("http://localhost:3000/api/v1/makes?year=" + year)
+    fetch("/api/v1/makes?year=" + year)
     .then((response) => response.json())
     .then((makes) => {
       makes.forEach((make) => {
@@ -86,7 +86,7 @@
 
   const fetchModels = (year, make) => {
     $('.model-menu').show();
-    fetch(`http://localhost:3000/api/v1/models?year=${year}&make=${make}`)
+    fetch(`/api/v1/models?year=${year}&make=${make}`)
     .then((response) => response.json())
     .then((models) => {
       models.forEach((model) => {
@@ -105,7 +105,7 @@
 
   const fetchOptions = (year, make, model) => {
     $('.option-menu').show();
-    fetch(`http://localhost:3000/api/v1/options?year=${year}&make=${make}&model=${model}`)
+    fetch(`/api/v1/options?year=${year}&make=${make}&model=${model}`)
     .then((response) => response.json())
     .then((options) => {
       options.forEach((option) => {
