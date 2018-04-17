@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
   get 'dashboard', to: 'dashboard#index'
-  get '/comparision', to: 'comparision#new', as: 'new_comparision'
   get '/new_search', to: 'search#new'
   get '/search', to: 'search#index'
+  get '/comparision/new', to: 'comparision#new', as: 'new_comparision'
+  get '/comparision', to: 'comparision#show', as: 'comparision'
   resources :vehicles, except: [:new]
 
   namespace :api do
