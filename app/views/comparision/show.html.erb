@@ -1,0 +1,115 @@
+Make: <%= @vehicle_1.make %>
+Model: <%= @vehicle_1.model %>
+Year: <%= @vehicle_1.year %>
+Fuel Type: <%= @vehicle_1.fuel_type %>
+Range: <%= @vehicle_1.range %> miles
+MPGe: <%= @vehicle_1.mpge %>
+Time to charge at 120V: <%= @vehicle_1.charge_120 %>
+Time to charge at 240V: <%= @vehicle_1.charge_240 %>
+<br>
+Make: <%= @vehicle_2.make %>
+Model: <%= @vehicle_2.model %>
+Year: <%= @vehicle_2.year %>
+Fuel Type: <%= @vehicle_2.fuel_type %>
+Range: <%= @vehicle_2.range %> miles
+MPGe: <%= @vehicle_2.mpge %>
+Time to charge at 120V: <%= @vehicle_2.charge_120 %>
+Time to charge at 240V: <%= @vehicle_2.charge_240 %>
+
+<div id='map' class='contain'></div>
+<script>
+  var userAddress = [<%= @long %>, <%= @lat %>];
+  var vehicleRadius1 = <%= @vehicle_1.range %>*1.60934
+  var vehicleRadius2 = <%= @vehicle_2.range %>*1.60934
+
+  // Add your access token
+  mapboxgl.accessToken = 'pk.eyJ1IjoiY29ybmVsaXVzZWxsZW4iLCJhIjoiY2pmcXl6bXJ6Mms4dTJ3bWs1ZXlybHI0YyJ9.8vNvhgU9s1lCoR2u-zGtdA'
+
+
+  // Initialize a map
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v9',
+    center: userAddress,
+    zoom: 5
+  });
+
+  // Create a GeoJSON feature collection for the user address
+  var address = turf.featureCollection([turf.point(userAddress)]);
+
+  map.on('load', function() {
+  var marker = document.createElement('div');
+  marker.classList = 'address';
+
+    // Create a new marker
+    addressMarker = new mapboxgl.Marker(marker)
+      .setLngLat(userAddress)
+      .addTo(map);
+
+
+    var createGeoJSONCircle = function(center, radiusInKm, points) {
+    if(!points) points = 64;
+
+    var coords = {
+        latitude: center[1],
+        longitude: center[0]
+    };
+
+    var km = radiusInKm;
+
+    var ret = [];
+    var distanceX = km/(111.320*Math.cos(coords.latitude*Math.PI/180));
+    var distanceY = km/110.574;
+
+    var theta, x, y;
+    for(var i=0; i<points; i++) {
+        theta = (i/points)*(2*Math.PI);
+        x = distanceX*Math.cos(theta);
+        y = distanceY*Math.sin(theta);
+
+        ret.push([coords.longitude+x, coords.latitude+y]);
+    }
+    ret.push(ret[0]);
+
+    return {
+        "type": "geojson",
+        "data": {
+            "type": "FeatureCollection",
+            "features": [{
+                "type": "Feature",
+                "geometry": {
+                    "type": "Polygon",
+                    "coordinates": [ret]
+                }
+            }]
+        }
+    };
+  };
+
+  map.addSource("polygon1", createGeoJSONCircle(userAddress, vehicleRadius1));
+  map.addSource("polygon2", createGeoJSONCircle(userAddress, vehicleRadius2));
+
+  map.addLayer({
+      "id": "polygon1",
+      "type": "fill",
+      "source": "polygon1",
+      "layout": {},
+      "paint": {
+          "fill-color": "blue",
+          "fill-opacity": 0.2
+      }
+  });
+
+  map.addLayer({
+      "id": "polygon2",
+      "type": "fill",
+      "source": "polygon2",
+      "layout": {},
+      "paint": {
+          "fill-color": "red",
+          "fill-opacity": 0.4
+      }
+  });
+
+});
+</script>
