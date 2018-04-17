@@ -1,15 +1,19 @@
-Make: <%= @vehicle.make %>
-Model: <%= @vehicle.model %>
-Year: <%= @vehicle.year %>
-Fuel Type: <%= @vehicle.fuel_type %>
-Range: <%= @vehicle.range %> miles
-MPGe: <%= @vehicle.mpge %>
-Time to charge at 120V: <%= @vehicle.charge_120 %>
-Time to charge at 240V: <%= @vehicle.charge_240 %>
+<div class="info">
+  <p>
+    Make: <%= @vehicle.make %><br>
+    Model: <%= @vehicle.model %><br>
+    Year: <%= @vehicle.year %><br>
+    Fuel Type: <%= @vehicle.fuel_type %><br>
+    Range: <%= @vehicle.range %> miles <br>
+    MPGe: <%= @vehicle.mpge %><br>
+    Time to charge at 120V: <%= @vehicle.charge_120 %><br>
+    Time to charge at 240V: <%= @vehicle.charge_240 %><br>
 
-<%= button_to "Save Vehicle", {controller: "vehicles", action: :create, vehicle: @vehicle.attributes}, method: :post %>
+    <%= button_to "Save Vehicle", {controller: "vehicles", action: :create, vehicle: @vehicle.attributes}, method: :post %>
+  </p>
+</div>
 
-<div id='map' class='contain'></div>
+<div id='map-1' class='contain'></div>
 <script>
   var userAddress = [<%= @long %>, <%= @lat %>];
   var vehicleRadius = <%= @vehicle.range %>*1.60934
@@ -20,10 +24,10 @@ Time to charge at 240V: <%= @vehicle.charge_240 %>
 
   // Initialize a map
   var map = new mapboxgl.Map({
-    container: 'map', // container id
+    container: 'map-1', // container id
     style: 'mapbox://styles/mapbox/light-v9', // stylesheet location
     center: userAddress, // starting position
-    zoom: 6 // starting zoom
+    zoom: 5 // starting zoom
   });
 
   // Create a GeoJSON feature collection for the user address

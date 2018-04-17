@@ -36,7 +36,7 @@
   </div>
 
   <div class="right-primary-half">
-      <div id="vehicle_info">
+
   </div>
 </div>
 
@@ -130,7 +130,7 @@
               address: ($('.address-field').children().val())
             },
       success:function(responseText) {
-        $('#vehicle_info').html(responseText);
+        $('.right-primary-half').html(responseText);
       }
     });
   }
