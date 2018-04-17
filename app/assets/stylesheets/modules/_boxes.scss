@@ -1,7 +1,9 @@
 @mixin box {
   margin: 50px;
   padding: 20px;
+  height: 100vh;
   background-color: $cerulean;
   display: flex;
   flex-direction: column;
+  opacity: 0.5;
 }

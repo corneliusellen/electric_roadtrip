@@ -1,22 +1,26 @@
-<div class="info">
-  <p>
-    Make: <%= @vehicle.make %><br>
-    Model: <%= @vehicle.model %><br>
-    Year: <%= @vehicle.year %><br>
-    Fuel Type: <%= @vehicle.fuel_type %><br>
-    Range: <%= @vehicle.range %> miles <br>
-    MPGe: <%= @vehicle.mpge %><br>
-    Time to charge at 120V: <%= @vehicle.charge_120 %><br>
-    Time to charge at 240V: <%= @vehicle.charge_240 %><br>
+Make: <%= @vehicle_1.make %>
+Model: <%= @vehicle_1.model %>
+Year: <%= @vehicle_1.year %>
+Fuel Type: <%= @vehicle_1.fuel_type %>
+Range: <%= @vehicle_1.range %> miles
+MPGe: <%= @vehicle_1.mpge %>
+Time to charge at 120V: <%= @vehicle_1.charge_120 %>
+Time to charge at 240V: <%= @vehicle_1.charge_240 %>
+<br>
+Make: <%= @vehicle_2.make %>
+Model: <%= @vehicle_2.model %>
+Year: <%= @vehicle_2.year %>
+Fuel Type: <%= @vehicle_2.fuel_type %>
+Range: <%= @vehicle_2.range %> miles
+MPGe: <%= @vehicle_2.mpge %>
+Time to charge at 120V: <%= @vehicle_2.charge_120 %>
+Time to charge at 240V: <%= @vehicle_2.charge_240 %>
 
-    <%= button_to "Save Vehicle", {controller: "vehicles", action: :create, vehicle: @vehicle.attributes}, method: :post %>
-  </p>
-</div>
-
-<div id='map-1' class='contain'></div>
+<div id='map' class='contain'></div>
 <script>
   var userAddress = [<%= @long %>, <%= @lat %>];
-  var vehicleRadius = <%= @vehicle.range %>*1.60934
+  var vehicleRadius1 = <%= @vehicle_1.range %>*1.60934
+  var vehicleRadius2 = <%= @vehicle_2.range %>*1.60934
 
   // Add your access token
   mapboxgl.accessToken = 'pk.eyJ1IjoiY29ybmVsaXVzZWxsZW4iLCJhIjoiY2pmcXl6bXJ6Mms4dTJ3bWs1ZXlybHI0YyJ9.8vNvhgU9s1lCoR2u-zGtdA'
@@ -24,10 +28,10 @@
 
   // Initialize a map
   var map = new mapboxgl.Map({
-    container: 'map-1', // container id
-    style: 'mapbox://styles/mapbox/light-v9', // stylesheet location
-    center: userAddress, // starting position
-    zoom: 5 // starting zoom
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v9',
+    center: userAddress,
+    zoom: 5
   });
 
   // Create a GeoJSON feature collection for the user address
@@ -82,16 +86,28 @@
     };
   };
 
-  map.addSource("polygon", createGeoJSONCircle(userAddress, vehicleRadius));
+  map.addSource("polygon1", createGeoJSONCircle(userAddress, vehicleRadius1));
+  map.addSource("polygon2", createGeoJSONCircle(userAddress, vehicleRadius2));
 
   map.addLayer({
-      "id": "polygon",
+      "id": "polygon1",
       "type": "fill",
-      "source": "polygon",
+      "source": "polygon1",
       "layout": {},
       "paint": {
           "fill-color": "blue",
-          "fill-opacity": 0.6
+          "fill-opacity": 0.2
+      }
+  });
+
+  map.addLayer({
+      "id": "polygon2",
+      "type": "fill",
+      "source": "polygon2",
+      "layout": {},
+      "paint": {
+          "fill-color": "red",
+          "fill-opacity": 0.4
       }
   });
 
