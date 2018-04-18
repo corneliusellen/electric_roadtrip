@@ -34,7 +34,7 @@ describe "User can find stations along route" do
           click_on "Route!"
 
           expect(current_path).to eq(new_route_path)
-          expect(page).to have_css(".station-map")
+          expect(page).to have_css("#station-map")
         end
       end
     end
