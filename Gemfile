@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'omniauth-google-oauth2'
 gem 'figaro'
 gem 'faraday'
+gem 'google_maps_service'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -40,6 +41,7 @@ group :development, :test do
   gem 'pry'
   gem 'factory_bot_rails'
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+  gem 'newrelic_rpm'
 end
 
 group :test do

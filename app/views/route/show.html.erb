@@ -1,0 +1,43 @@
+<div id='station-map' class='contain'></div>
+<script>
+  var userAddress = [<%= @long %>, <%= @lat %>];
+
+  // Add your access token
+  mapboxgl.accessToken = 'pk.eyJ1IjoiY29ybmVsaXVzZWxsZW4iLCJhIjoiY2pmcXl6bXJ6Mms4dTJ3bWs1ZXlybHI0YyJ9.8vNvhgU9s1lCoR2u-zGtdA'
+
+  // Initialize a map
+  var map = new mapboxgl.Map({
+    container: 'station-map',
+    style: 'mapbox://styles/mapbox/light-v9',
+    center: <%= @route.first %>,
+    zoom: 8
+  });
+
+  map.on('load', function () {
+
+    map.addLayer({
+        "id": "route",
+        "type": "line",
+        "source": {
+            "type": "geojson",
+            "data": {
+                "type": "Feature",
+                "properties": {},
+                "geometry": {
+                    "type": "LineString",
+                    "coordinates": <%= @route %>
+                }
+            }
+        },
+        "layout": {
+            "line-join": "round",
+            "line-cap": "round"
+        },
+        "paint": {
+            "line-color": "blue",
+            "line-width": 5
+        }
+    });
+
+});
+</script>
