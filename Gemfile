@@ -41,6 +41,7 @@ group :development, :test do
   gem 'pry'
   gem 'factory_bot_rails'
   gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+  gem 'newrelic_rpm'
 end
 
 group :test do
