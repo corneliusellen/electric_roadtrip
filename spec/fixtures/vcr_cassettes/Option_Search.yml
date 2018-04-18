@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.fueleconomy.gov/ws/rest/vehicle/menu/options?make=chevrolet&model=bolt%20ev&year=2018
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Length:
+      - '141'
+      Content-Type:
+      - application/xml
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; preload
+      Date:
+      - Wed, 18 Apr 2018 04:05:09 GMT
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><menuItems><menuItem><text>Auto
+        (A1)</text><value>39786</value></menuItem></menuItems>
+    http_version: 
+  recorded_at: Wed, 18 Apr 2018 04:05:09 GMT
+recorded_with: VCR 4.0.0
