@@ -43,6 +43,7 @@ describe "User can add vehicle to profile" do
       expect(page).to have_content("MPGe: 0")
       expect(page).to have_content("Time to charge at 120V: n/a")
       expect(page).to have_content("Time to charge at 240V: 9 hours")
+      expect(page).to have_css("car-image")
     end
   end
 end
