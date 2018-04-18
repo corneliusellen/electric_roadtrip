@@ -9,6 +9,8 @@
     Time to charge at 120V: <%= @vehicle.charge_120 %><br>
     Time to charge at 240V: <%= @vehicle.charge_240 %><br>
 
+<%= image_tag "#{@image}", class: "car-image", alt: "#{@vehicle.make} #{@vehicle.model} car" %>
+
     <%= button_to "Save Vehicle", {controller: "vehicles", action: :create, vehicle: @vehicle.attributes}, method: :post %>
   </p>
 </div>

@@ -10,6 +10,7 @@ class SearchController < ApplicationController
     @long = result.long
     vehicle_info = VehicleSearch.new(params[:vehicle_id]).find_vehicle
     @vehicle = create_vehicle(vehicle_info)
+    @image = VehicleImageSearch.new(@vehicle).find_image
   end
 
   private
