@@ -1,0 +1,71 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.fueleconomy.gov/ws/rest/vehicle/menu/model?make=chevrolet&year=2018
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Length:
+      - '2806'
+      Content-Type:
+      - application/xml
+      Server:
+      - Microsoft-IIS/7.5
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; preload
+      Date:
+      - Wed, 18 Apr 2018 04:03:06 GMT
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><menuItems><menuItem><text>Bolt
+        EV</text><value>Bolt EV</value></menuItem><menuItem><text>Camaro</text><value>Camaro</value></menuItem><menuItem><text>City
+        Express Cargo Van</text><value>City Express Cargo Van</value></menuItem><menuItem><text>Colorado
+        2WD</text><value>Colorado 2WD</value></menuItem><menuItem><text>Colorado 4WD</text><value>Colorado
+        4WD</value></menuItem><menuItem><text>Colorado Cab Chassis 2WD</text><value>Colorado
+        Cab Chassis 2WD</value></menuItem><menuItem><text>Colorado ZR2 4WD</text><value>Colorado
+        ZR2 4WD</value></menuItem><menuItem><text>Corvette</text><value>Corvette</value></menuItem><menuItem><text>Cruze</text><value>Cruze</value></menuItem><menuItem><text>Cruze
+        Hatchback</text><value>Cruze Hatchback</value></menuItem><menuItem><text>Cruze
+        Premier</text><value>Cruze Premier</value></menuItem><menuItem><text>Cruze
+        Premier Hatchback</text><value>Cruze Premier Hatchback</value></menuItem><menuItem><text>Equinox
+        AWD</text><value>Equinox AWD</value></menuItem><menuItem><text>Equinox FWD</text><value>Equinox
+        FWD</value></menuItem><menuItem><text>Impala</text><value>Impala</value></menuItem><menuItem><text>Malibu</text><value>Malibu</value></menuItem><menuItem><text>Malibu
+        Hybrid</text><value>Malibu Hybrid</value></menuItem><menuItem><text>Silverado
+        15 Hybrid 2WD</text><value>Silverado 15 Hybrid 2WD</value></menuItem><menuItem><text>Silverado
+        15 Hybrid 4WD</text><value>Silverado 15 Hybrid 4WD</value></menuItem><menuItem><text>Silverado
+        C15 2WD</text><value>Silverado C15 2WD</value></menuItem><menuItem><text>Silverado
+        C15 Cab Chassis 2WD</text><value>Silverado C15 Cab Chassis 2WD</value></menuItem><menuItem><text>Silverado
+        K15 4WD</text><value>Silverado K15 4WD</value></menuItem><menuItem><text>Silverado
+        K15 Cab Chassis 4WD</text><value>Silverado K15 Cab Chassis 4WD</value></menuItem><menuItem><text>Sonic</text><value>Sonic</value></menuItem><menuItem><text>Sonic
+        5</text><value>Sonic 5</value></menuItem><menuItem><text>Spark</text><value>Spark</value></menuItem><menuItem><text>Spark
+        ACTIV</text><value>Spark ACTIV</value></menuItem><menuItem><text>Suburban
+        C1500 2WD</text><value>Suburban C1500 2WD</value></menuItem><menuItem><text>Suburban
+        K1500 4WD</text><value>Suburban K1500 4WD</value></menuItem><menuItem><text>Tahoe
+        C1500 2WD</text><value>Tahoe C1500 2WD</value></menuItem><menuItem><text>Tahoe
+        K1500 4WD</text><value>Tahoe K1500 4WD</value></menuItem><menuItem><text>Traverse
+        AWD</text><value>Traverse AWD</value></menuItem><menuItem><text>Traverse FWD</text><value>Traverse
+        FWD</value></menuItem><menuItem><text>Trax</text><value>Trax</value></menuItem><menuItem><text>Trax
+        AWD</text><value>Trax AWD</value></menuItem><menuItem><text>Volt</text><value>Volt</value></menuItem></menuItems>
+    http_version: 
+  recorded_at: Wed, 18 Apr 2018 04:03:06 GMT
+recorded_with: VCR 4.0.0

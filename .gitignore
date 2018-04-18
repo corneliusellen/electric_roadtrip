@@ -21,5 +21,8 @@
 # Ignore application configuration
 /config/application.yml
 
-#ignore public assets
+# Ignore public assets
 /public/assets
+
+# Ignore simplecov
+/coverage
