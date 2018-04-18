@@ -4,9 +4,11 @@ class VehiclesController < ApplicationController
     vehicle = Vehicle.create(vehicle_params)
     vehicle.update(user_id: current_user.id)
     if vehicle.save
+      flash[:notice] = "Vehicle saved"
       redirect_to dashboard_path
     else
-      render
+      flash[:notice] = "Vehicle not saved. Please try again."
+      redirect_to dashboard_path
     end
   end
 
