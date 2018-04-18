@@ -10,7 +10,7 @@ describe "User can add vehicle to profile" do
 
     let(:user) { User.new }
 
-    it "I can add a vehicle to my profile page" do
+    it "I can search for a vehicle and see it's information and range on a map" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit dashboard_path
       click_on "Add First Vehicle"
