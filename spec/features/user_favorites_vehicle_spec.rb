@@ -39,6 +39,7 @@ describe "User can add vehicle to profile" do
       expect(page).to have_content("Chevrolet")
       expect(page).to have_content("Bolt EV")
       expect(page).to have_content("2018")
+      expect(user.vehicles.count).to eq(1)
     end
   end
 end
