@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/search', to: 'search#index'
   get '/comparision/new', to: 'comparision#new', as: 'new_comparision'
   get '/comparision', to: 'comparision#show', as: 'comparision'
+  get '/route/new', to: 'route#new', as: 'new_route'
+  get '/route', to: 'route#show'
   resources :vehicles, except: [:new]
 
   namespace :api do
