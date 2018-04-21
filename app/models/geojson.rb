@@ -1,16 +1,16 @@
 class Geojson
-
-  def self.build_station(station)
-    {
+  def self.build_stations(stations)
+    stations.map do |station|
+      {
         "type": "Feature",
         "geometry": {
-            "type": "Point",
-            "coordinates": station
-        },
+          "type": "Point",
+          "coordinates": station
+          },
         "properties": {
-            "icon": "monument"
+          "icon": "monument"
+          }
         }
-    }
+    end
   end
-
 end
