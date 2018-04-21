@@ -2,7 +2,7 @@
     border-radius: 50%;
     width: $size;
     height: $size;
-    background-image: image-url('stephen-monroe.jpg');
+    background-image: image-url('button_link.png');
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -13,6 +13,7 @@
       a {
         font-size: $font;
         text-shadow: -1px 0 $jet-black, 0 1px $jet-black, 1px 0 $jet-black, 0 -1px $jet-black;
+        color: $jet-black;
       }
     }
   }

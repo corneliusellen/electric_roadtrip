@@ -1,12 +1,19 @@
 @import "partials/base";
 @import "partials/login";
+@import "partials/form";
 
 .dashboard-circle-button {
-  @include circle(250px, 30px)
+  @include circle(250px, 27px);
 }
 
-.dashboard-large-circle-button {
-  @include circle(300px, 40px)
+.blue-glow {
+  box-shadow:
+  inset 0 0 50px #4666FF,
+  0 0 50px #4666FF;
+}
+
+.color {
+  color: #E117FC;
 }
 
 .dashbaord {

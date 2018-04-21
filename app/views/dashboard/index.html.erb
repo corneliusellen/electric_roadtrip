@@ -23,7 +23,17 @@
       <h2><%= link_to "Compare Vehicles", new_comparision_path %></h2>
     </div>
     <div class="dashboard-circle-button">
-      <h2><%= link_to "Find Routes", new_route_path %></h2>
+      <h2><%= link_to "Find<br />Routes".html_safe, new_route_path %></h2>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $('.dashboard-circle-button').on('mouseenter', function () {
+    $(this).addClass('blue-glow');
+  })
+
+  $('.dashboard-circle-button').on('mouseleave', function () {
+    $(this).removeClass('blue-glow');
+  })
+</script>
