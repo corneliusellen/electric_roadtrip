@@ -8,7 +8,7 @@ class Geojson
           "coordinates": station
           },
         "properties": {
-          "icon": "monument"
+          "icon": "fuel"
           }
         }
     end
