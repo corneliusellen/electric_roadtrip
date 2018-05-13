@@ -1,18 +1,18 @@
-<div class="info">
-  <p>
-    Make: <%= @vehicle.make %><br>
-    Model: <%= @vehicle.model %><br>
-    Year: <%= @vehicle.year %><br>
-    Fuel Type: <%= @vehicle.fuel_type %><br>
-    Range: <%= @vehicle.range %> miles <br>
-    MPGe: <%= @vehicle.mpge %><br>
-    Time to charge at 120V: <%= @vehicle.charge_120 %><br>
-    Time to charge at 240V: <%= @vehicle.charge_240 %><br>
+<div class="info-top-quarter-search">
+  <div class="vehicle-1">
+    <p><%= @vehicle.year %> <%= @vehicle.make %> <%= @vehicle.model %></p>
+    <p>Fuel Type: <%= @vehicle.fuel_type %></p>
+    <p>Range: <%= @vehicle.range %> miles</p>
+    <p>MPGe: <%= @vehicle.mpge %></p>
+    <p>Time to charge at 120V: <%= @vehicle.charge_120 %></p>
+    <p>Time to charge at 240V: <%= @vehicle.charge_240 %></p>
+  </div>
 
-<%= image_tag "#{@image}", class: "car-image", alt: "#{@vehicle.make} #{@vehicle.model} car" %>
+  <div class="vehicle-pic">
+    <%= image_tag "#{@image}", class: "car-image", alt: "#{@vehicle.make} #{@vehicle.model} car" %>
 
-    <%= button_to "Save Vehicle", {controller: "vehicles", action: :create, vehicle: @vehicle.attributes}, method: :post %>
-  </p>
+    <h2><%= link_to "Save Vehicle", {controller: "vehicles", action: :create, vehicle: @vehicle.attributes}, method: :post %></h2>
+  </div>
 </div>
 
 <div id='map-1' class='contain'></div>

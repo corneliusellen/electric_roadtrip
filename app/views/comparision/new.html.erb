@@ -1,6 +1,7 @@
+<%= render "../views/navigation" %>
+
 <div class="dashbaord">
   <div class="left-secondary-half">
-    <div class="background">
       <div class="form-style-5">
         <h2>Enter Address:</h2>
           <aside class="address-field">
@@ -60,11 +61,9 @@
 
           <input id="new-comparision-submit" type="submit" name="" value="COMPARE">
       </div>
-    </div>
   </div>
 
   <div class="right-primary-half">
-      <div id="vehicle_info">
   </div>
 </div>
 
@@ -239,7 +238,7 @@
               address: ($('.address-field').children().val())
             },
       success:function(responseText) {
-        $('#vehicle_info').html(responseText);
+        $('.right-primary-half').html(responseText);
       }
     });
   }

@@ -4,6 +4,16 @@
 
 .dashboard-circle-button {
   @include circle(250px, 27px);
+  margin: 30px;
+}
+
+.nav-text {
+  font-size: 24px;
+}
+
+.dashboard-text {
+  font-size: 28px;
+  color: $jet-black;
 }
 
 .blue-glow {
@@ -24,29 +34,24 @@
 
 .left-secondary-half  {
   width: 50%;
-  background: linear-gradient(
-   rgba(0, 0, 0, 0.8),
-   rgba(0, 0, 0, 0.8)
-   ),
-   image-url('leather.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .profile {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  padding: 20px;
 }
 
 .right-primary-half {
-  background-image: image-url('leather.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
   width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+
+  p {
+    color: $white;
+  }
 }
 
 .background {
@@ -70,7 +75,7 @@
 
   #map-1 {
     width: 100%;
-    height: 65vh;
+    height: 60vh;
     margin: 29px;
   }
 
@@ -85,10 +90,109 @@
 
 .car-image {
   width: 200px;
-  height: 400px;
+  height: 200px;
+  margin: 15px;
+  border-radius: 50%;
 }
 
 #station-map {
   width: 100%;
   height: 100vh;
+}
+
+#comparision-map {
+  width: 100%;
+  height: 60vh;
+}
+
+.info-top-quarter {
+  height: 40vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.vehicle-1 {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  line-height: 5px;
+  h2 {
+    padding: 1px;
+  }
+}
+
+.vehicle-2 {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  line-height: 5px;
+  h2 {
+    padding: 1px;
+  }
+}
+
+.vehicle-pic {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  align-items: center;
+
+  h2   {
+    color: $jet-black;
+    font-weight: bold;
+  }
+
+  a {
+    text-decoration: none;
+    color: $white;
+    font-size: 20px;
+    font-weight: bolder;
+    background-color: $jet-black;
+    padding: 10px;
+  }
+
+  a:hover {
+    color: $granite;
+    background-color: $lightning;
+  }
+
+  a:active {
+    color: $jet-black;
+  }
+}
+
+#nav-bar {
+  width: 100%;
+  height: 55px;
+  background: image-url('red-vinyl-wood.jpg');
+  background-repeat: repeat;
+}
+
+.info-top-quarter-search {
+  height: 40vh;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.vehicle-list {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px;
+}
+
+.delete-button {
+  color: $white;
+  font-size: 20px;
+  font-weight: bolder;
+  background-color: $jet-black;
+  padding: 10px;
+  .button:hover {
+    color: $granite;
+    background-color: $lightning;
+  }
+
+  .button:active {
+    color: $jet-black;
+  }
 }
