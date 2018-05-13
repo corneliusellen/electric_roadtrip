@@ -11,7 +11,7 @@
   <div class="vehicle-pic">
     <%= image_tag "#{@image}", class: "car-image", alt: "#{@vehicle.make} #{@vehicle.model} car" %>
 
-    <h2><%= link_to "Save Vehicle", {controller: "vehicles", action: :create, vehicle: @vehicle.attributes}, method: :post %></h2>
+    <h2><%= button_to("Save Vehicle", {controller: "vehicles", action: :create, vehicle: @vehicle.attributes}, method: :post, class: "button") %></h2>
   </div>
 </div>
 
