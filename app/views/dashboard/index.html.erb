@@ -1,18 +1,20 @@
+<%= render "../views/dash_navigation" %>
+
 <div class="dashbaord">
   <div class="left-secondary-half">
     <div class="background">
-      <div class="profile">
-        <h2>Hello, <%= "#{current_user.first_name} #{current_user.last_name}" %></h2>
-        <p>Edit Profile</p>
-        <p><%= link_to "Logout", logout_path %></p>
-      </div>
       <div class="vehicles">
-        <p>Vehicles:</p>
-        <p><%= link_to "Add First Vehicle", new_search_path %></p>
-        <% current_user.vehicles.each do |vehicle| %>
-          <p><%= vehicle.make %></p>
-          <p><%= vehicle.model %></p>
-          <p><%= vehicle.year %></p>
+        <h1 class="dashboard-text">Vehicles:</h1>
+        <% if current_user.vehicles.empty? %>
+          <h2><%= link_to "Add First Vehicle", new_search_path %></h2>
+        <% else %>
+            <% current_user.vehicles.each do |vehicle| %>
+            <div class="vehicle-list">
+              <p><%= vehicle.year %> <%= vehicle.make %> <%= vehicle.model %></p>
+              <%= button_to("Delete", {controller: "vehicles", action: :destroy, id: vehicle.id}, method: "delete", class: "button") %>
+            </div>
+            <% end %>
+              <h2><%= link_to "Add Vehicle", new_search_path %></h2>
         <% end %>
       </div>
     </div>

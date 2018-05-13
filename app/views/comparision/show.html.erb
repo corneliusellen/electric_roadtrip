@@ -1,22 +1,28 @@
-Make: <%= @vehicle_1.make %>
-Model: <%= @vehicle_1.model %>
-Year: <%= @vehicle_1.year %>
-Fuel Type: <%= @vehicle_1.fuel_type %>
-Range: <%= @vehicle_1.range %> miles
-MPGe: <%= @vehicle_1.mpge %>
-Time to charge at 120V: <%= @vehicle_1.charge_120 %>
-Time to charge at 240V: <%= @vehicle_1.charge_240 %>
-<br>
-Make: <%= @vehicle_2.make %>
-Model: <%= @vehicle_2.model %>
-Year: <%= @vehicle_2.year %>
-Fuel Type: <%= @vehicle_2.fuel_type %>
-Range: <%= @vehicle_2.range %> miles
-MPGe: <%= @vehicle_2.mpge %>
-Time to charge at 120V: <%= @vehicle_2.charge_120 %>
-Time to charge at 240V: <%= @vehicle_2.charge_240 %>
+<div class="info-top-quarter">
+  <div class="vehicle-1">
+    <h2>Vechicle 1:</h2>
+    <p><%= @vehicle_1.year %> <%= @vehicle_1.make %> <%= @vehicle_1.model%> </p>
+    <p>Fuel Type: <%= @vehicle_1.fuel_type %></p>
+    <p>Range: <%= @vehicle_1.range %> miles</p>
+    <p>MPGe: <%= @vehicle_1.mpge %></p>
+    <p>Time to charge at 120V: <%= @vehicle_1.charge_120 %></p>
+    <p>Time to charge at 240V: <%= @vehicle_1.charge_240 %></p>
+    <p>Color on Map: Blue</p>
+  </div>
+  <div class="vehicle-2">
+    <h2>Vechicle 2:</h2>
+    <p><%= @vehicle_2.year %> <%= @vehicle_2.make %> <%= @vehicle_2.model %></p>
+    <p>Fuel Type: <%= @vehicle_2.fuel_type %></p>
+    <p>Range: <%= @vehicle_2.range %> miles</p>
+    <p>MPGe: <%= @vehicle_2.mpge %></p>
+    <p>Time to charge at 120V: <%= @vehicle_2.charge_120 %></p>
+    <p>Time to charge at 240V: <%= @vehicle_2.charge_240 %></p>
+    <p>Color on Map: Red</p>
+  </div>
+</div>
 
-<div id='map' class='contain'></div>
+<div id='comparision-map' class='contain'></div>
+
 <script>
   var userAddress = [<%= @long %>, <%= @lat %>];
   var vehicleRadius1 = <%= @vehicle_1.range %>*1.60934
@@ -28,7 +34,7 @@ Time to charge at 240V: <%= @vehicle_2.charge_240 %>
 
   // Initialize a map
   var map = new mapboxgl.Map({
-    container: 'map',
+    container: 'comparision-map',
     style: 'mapbox://styles/mapbox/light-v9',
     center: userAddress,
     zoom: 4

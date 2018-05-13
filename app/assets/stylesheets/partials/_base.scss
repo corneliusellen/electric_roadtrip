@@ -1,11 +1,11 @@
-@import "modules/buttons";
 @import "modules/colors";
 @import "modules/circles";
 @import "modules/boxes";
 
 body, html {
   margin: 0px;
-  height: 100%
+  height: 100%;
+  background-image: image-url('car-leather-wood.jpg');
 }
 
 h1 {
@@ -15,6 +15,7 @@ h1 {
   line-height: 46px;
   font-size: 60px;
   margin: 0 0 23px 0;
+  color: $white;
 }
 
 h2 {
@@ -33,7 +34,7 @@ p {
    font-size: 17px;
    line-height: 23px;
    margin: 0 0 23px 0;
-   color: $white;
+   color: $jet-black;
    }
 
 a {
@@ -45,5 +46,5 @@ a:hover {
   color: $lightning
 }
 a:active {
-  color: $lightning
+  color: black
 }
