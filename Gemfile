@@ -27,6 +27,7 @@ gem 'omniauth-google-oauth2'
 gem 'figaro'
 gem 'faraday'
 gem 'google_maps_service'
+gem 'newrelic_rpm'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
