@@ -8,14 +8,7 @@ class SearchController < ApplicationController
     result.geocode
     @lat = result.lat
     @long = result.long
-    vehicle_info = VehicleSearch.new(params[:vehicle_id]).find_vehicle
-    @vehicle = create_vehicle(vehicle_info)
+    @vehicle = Vehicle.find_by(record_id: params[:vehicle_id])
     @image = VehicleImageSearch.new(@vehicle).find_image
-  end
-
-  private
-
-  def create_vehicle(vehicle_info)
-    Vehicle.new(make: vehicle_info["make"], model: vehicle_info["model"], year: vehicle_info["year"], fuel_type: vehicle_info["fuelType"], range: vehicle_info["range"], mpge: vehicle_info["combA08"], charge120: vehicle_info["charge120"], charge240: vehicle_info["charge240"])
   end
 end

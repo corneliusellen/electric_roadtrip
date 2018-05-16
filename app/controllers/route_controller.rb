@@ -3,6 +3,7 @@ class RouteController < ApplicationController
   end
 
   def show
+    @vehicle = Vehicle.find_by(record_id: params[:vehicle_id])
     service = RouteService.new(params[:start_address], params[:end_address])
     linestring = service.get_linestring
     @route = service.get_route
