@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/comparision', to: 'comparision#show', as: 'comparision'
   get '/route/new', to: 'route#new', as: 'new_route'
   get '/route', to: 'route#show'
-  resources :vehicles, except: [:new, :show, :edit, :update]
+  resources :favorites, only: [:create, :index, :destroy]
 
   namespace :api do
     namespace :v1 do
