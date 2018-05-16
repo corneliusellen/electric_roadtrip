@@ -11,19 +11,21 @@ data = CSV.open('./db/data/vehicles.csv', headers: true, header_converters: :sym
 
 Vehicle.all.destroy_all
 
+ActiveRecord::Base.connection.reset_pk_sequence!(:vehicles)
+
 def populate_database(vehicle_data)
   vehicle_data.each do |vehicle|
     if vehicle[:fueltype].include?('Electricity')
       Vehicle.create!(
+        record_id: vehicle[:id],
         make: vehicle[:make],
         model: vehicle[:model],
         year: vehicle[:year],
         fuel_type: vehicle[:fueltype],
-        range: vehicle[:rangehwya],
+        range: vehicle[:range],
         mpge: vehicle[:comba08] || vehicle[:comb08],
         charge120: vehicle[:charge120],
-        charge240: vehicle[:charge240],
-        user_id: 1,
+        charge240: vehicle[:charge240]
       )
       puts "#{vehicle[:make]} #{vehicle[:model]} created"
     end
