@@ -1,5 +1,6 @@
 class Vehicle < ApplicationRecord
-  belongs_to :user
+  has_many :favorites
+  has_many :users, through: :favorites
 
   def charge_120
     if charge120 == 0

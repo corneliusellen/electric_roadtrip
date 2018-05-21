@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  has_many :vehicles
+  has_many :favorites
+  has_many :vehicles, through: :favorites
 
   def self.update_or_create(auth)
     user = User.find_by(uid: auth[:uid]) || User.new
