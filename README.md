@@ -4,11 +4,11 @@
 Currently, I am implementating a feature that will allow a user to plan a long-distance roadtrip with an electric vechicle by selecting EV stations near amenities like hotels and restaurants. 
 
 This application queries six external APIs:
-* [U.S. Department of Energy's FuelEconomy.gov API](https://www.fueleconomy.gov/feg/ws/index.shtml) for retrieving current electric vehicle information and options
-* [National Renewable Energy Laboratory (NREL)'s Alternative Fuel Stations API](https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/) for retrieving EV stations
-* [Google's Geocoding API](https://developers.google.com/maps/documentation/geocoding/intro) for converting user's address to lat/long coordinates
-* [Google's Directions API](https://developers.google.com/maps/documentation/directions/intro) for retrieving WKT linestring of given route for NREL API request and rendering route via Mapbox
-* [Car Imagery API](http://www.carimagery.com/) for rendering vehicle images
+* [U.S. Department of Energy's FuelEconomy.gov](https://www.fueleconomy.gov/feg/ws/index.shtml) for retrieving current electric vehicle information and options
+* [National Renewable Energy Laboratory (NREL)'s Alternative Fuel Stations](https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/) for retrieving EV stations
+* [Google Geocoding](https://developers.google.com/maps/documentation/geocoding/intro) for converting user's address to lat/long coordinates
+* [Google Directions](https://developers.google.com/maps/documentation/directions/intro) for retrieving WKT linestring of given route for NREL API request and rendering route via Mapbox
+* [Car Imagery](http://www.carimagery.com/) for rendering vehicle images
 * [Mapbox](https://www.mapbox.com/developers/) for rendering range visualizations
 
 ## Getting Started
