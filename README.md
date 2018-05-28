@@ -1,7 +1,15 @@
 # Electric Roadtrip
-[Electric Roadtrip](https://electric-roadtrip.herokuapp.com/) is an ongoing personal project to create an application that alleviates the concerns a person may have with purchasing an electric vechicle (EV). Using the app, a user can 1) compare electric vechicles and see a visual representation of different ranges and 2) find EV charging stations along a given route. 
+[Electric Roadtrip](https://electric-roadtrip.herokuapp.com/) is an ongoing personal project to create an application that alleviates the concerns a person may have with purchasing an electric vechicle (EV). Using the app, a user can 1) compare electric vechicles and see a map of different ranges and 2) find EV charging stations along a given route. 
 
 Currently, I am implementating a feature that will allow a user to plan a long-distance roadtrip with an electric vechicle by selecting EV stations near amenities like hotels and restaurants. 
+
+This application queries six external APIs:
+* [U.S. Department of Energy's FuelEconomy.gov API](https://www.fueleconomy.gov/feg/ws/index.shtml) for current electric vehicle information and options
+* [National Renewable Energy Laboratory (NREL)'s Alternative Fuel Stations API](https://developer.nrel.gov/docs/transportation/alt-fuel-stations-v1/) for EV stations
+* [Google's Geocoding API](https://developers.google.com/maps/documentation/geocoding/intro) Convert user's address to lat/long coordinates
+* [Google's Directions API](https://developers.google.com/maps/documentation/directions/intro) Retrieve WKT linestring of given route for NREL's API request and rendering route via MapBox
+* [Car Imagery](http://www.carimagery.com/) for vehicle images
+* [Mapbox](https://www.mapbox.com/developers/) for rendering maps
 
 ## Getting Started
 
