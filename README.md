@@ -9,7 +9,7 @@ This application queries six external APIs:
 * [Google's Geocoding API](https://developers.google.com/maps/documentation/geocoding/intro) for converting user's address to lat/long coordinates
 * [Google's Directions API](https://developers.google.com/maps/documentation/directions/intro) for retrieving WKT linestring of given route for NREL API request and rendering route via Mapbox
 * [Car Imagery API](http://www.carimagery.com/) for rendering vehicle images
-* [Mapbox](https://www.mapbox.com/developers/) for rendering maps
+* [Mapbox](https://www.mapbox.com/developers/) for rendering range visualizations
 
 ## Getting Started
 
